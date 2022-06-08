@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --background-color: #161616;
+        --logo-size: 60px;
+      }
+
+      #container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: var(--background-color);
+      }
+
+      #copy {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        color: #808080;
+        padding: 20px;
+      }
+
+      /* loading keyframes */
+
+      @keyframes loadingGradientAnimation {
+        0% {
+          background-position: 0% 0%;
+        }
+        100% {
+          background-position: 200% 0%;
+        }
+      }
+
+      @keyframes loadingSize {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      /* loading  */
+
+      #loading {
+        width: 60vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(
+          270deg,
+          #cc0000,
+          #ff6600,
+          #ffa800,
+          #33b400,
+          #0066cd,
+          #6600cc,
+          /* #ffafc8,
+          #74d7ee,
+          #613915, */ #cc0000,
+          #ff6600,
+          #ffa800,
+          #33b400,
+          #0066cd,
+          #6600cc,
+          /* #ffafc8,
+          #74d7ee,
+          #613915, */ #cc0000
+        );
+        background-size: 200vw 100%;
+        animation: loadingGradientAnimation 4s linear infinite,
+          loadingSize 6s ease forwards;
+      }
+
+      /* logo keyframes */
+
+      @keyframes logoGradientAnimation {
+        0% {
+          background-position: 0% 0%;
+        }
+        100% {
+          background-position: 0% -200%;
+        }
+      }
+
+      /* logo */
+
+      #logo {
+        display: none;
+        width: var(--logo-size);
+        height: var(--logo-size);
+
+        position: relative;
+
+        background: linear-gradient(
+          0deg,
+          #cc0000,
+          #ff6600,
+          #ffa800,
+          #33b400,
+          #0066cd,
+          #6600cc,
+          #cc0000,
+          #ff6600,
+          #ffa800,
+          #33b400,
+          #0066cd,
+          #6600cc,
+          #cc0000
+        );
+        background-size: 400% 400%;
+        animation: logoGradientAnimation 4s linear infinite;
+      }
+
+      #logo::before {
+        content: "";
+        width: 80%;
+        height: 80%;
+        margin: 10%;
+        display: block;
+        background: var(--background-color);
+      }
+
+      .logo-blur {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+
+        z-index: -1;
+        filter: blur(10px);
+        opacity: 0.6;
+        z-index: 9999;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading"></div>
+    <div id="container">
+      <div id="logo"><div id="logo" class="logo-blur"></div></div>
+      <div id="copy">Importing from Git...</div>
+    </div>
+  </body>
+</html>
